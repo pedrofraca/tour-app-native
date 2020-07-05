@@ -7,7 +7,6 @@ repositories {
 
 plugins {
     kotlin("multiplatform")
-    //kotlin("plugin.serialization")
 }
 
 kotlin {
@@ -30,7 +29,6 @@ kotlin {
 
     sourceSets["commonMain"].dependencies {
         api(project(":domain"))
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
         implementation("org.jetbrains.kotlin:kotlin-stdlib")
 
     }
@@ -39,6 +37,8 @@ kotlin {
         implementation(kotlin("test-junit"))
         implementation("io.mockk:mockk:1.9.3")
     }
+
+    sourceSets["iosMain"].dependencies {}
     
 }
 

@@ -7,7 +7,6 @@ repositories {
 
 plugins {
     kotlin("multiplatform")
-    //kotlin("plugin.serialization")
 }
 
 kotlin {
@@ -29,8 +28,7 @@ kotlin {
     jvm()
 
     sourceSets["commonMain"].dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
-
+        implementation("org.jetbrains.kotlin:kotlin-stdlib")
     }
 
     sourceSets["commonTest"].dependencies {
