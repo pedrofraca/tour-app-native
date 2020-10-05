@@ -1,4 +1,4 @@
-package com.example.data
+package io.github.pedrofraca.test
 
 import io.github.pedrofraca.data.datasource.ReadOnlyDataSource
 import io.github.pedrofraca.data.datasource.WriteDataSource
@@ -27,7 +27,7 @@ class StageRepositoryTest {
 
     @Test
     fun `test non empty response saves items`() {
-        every { api.getAll() } returns listOf(StageModel("patata", stage = "1"))
+        every { api.getAll() } returns listOf(StageModel("patata", stage = 1))
 
         repo.refresh()
 

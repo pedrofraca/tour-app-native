@@ -1,4 +1,4 @@
-package com.example.data
+package io.github.pedrofraca.test
 
 import io.github.pedrofraca.data.datasource.*
 import io.github.pedrofraca.data.datasource.classification.ClassificationRepositoryImpl
