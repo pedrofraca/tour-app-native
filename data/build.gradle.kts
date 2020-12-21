@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "io.github.pedrofraca"
-version = "0.0.4-SNAPSHOT"
+version = "0.0.8-SNAPSHOT"
 
 publishing {
     repositories {
