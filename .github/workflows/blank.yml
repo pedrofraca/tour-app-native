@@ -38,14 +38,14 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: build/xcode-frameworks/data.framework
       - name: Publishing data artifactory
-          uses: eskatos/gradle-command-action@v1.3.1
-          with:
-            # Path to the Gradle Wrapper directory
-            build-root-directory: data
-            arguments: publishJvmPublicationToGitHubPackagesRepository -Dpassword=${{ secrets.PASSWORD }} -Dusername=${{ secrets.USERNAME }}
+        uses: eskatos/gradle-command-action@v1.3.1
+        with:
+          # Path to the Gradle Wrapper directory
+          build-root-directory: data
+          arguments: publishJvmPublicationToGitHubPackagesRepository -Dpassword=${{ secrets.PASSWORD }} -Dusername=${{ secrets.USERNAME }}
       - name: Publishing domain artifactory
-          uses: eskatos/gradle-command-action@v1.3.1
-          with:
-            # Path to the Gradle Wrapper directory
-            build-root-directory: domain
-            arguments: publishJvmPublicationToGitHubPackagesRepository -Dpassword=${{ secrets.PASSWORD }} -Dusername=${{ secrets.USERNAME }}
+        uses: eskatos/gradle-command-action@v1.3.1
+        with:
+          # Path to the Gradle Wrapper directory
+          build-root-directory: domain
+          arguments: publishJvmPublicationToGitHubPackagesRepository -Dpassword=${{ secrets.PASSWORD }} -Dusername=${{ secrets.USERNAME }}
