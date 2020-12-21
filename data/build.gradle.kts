@@ -7,6 +7,28 @@ repositories {
 
 plugins {
     kotlin("multiplatform")
+    `maven-publish`
+}
+
+group = "io.github.pedrofraca"
+version = "0.0.4-SNAPSHOT"
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/pedrofraca/tour-app-native")
+            credentials {
+                username = System.getProperty("username")
+                password = System.getProperty("password")
+            }
+        }
+    }
+//    publications {
+//        register("gpr") {
+//            from(components["java"])
+//        }
+//    }
 }
 
 kotlin {
