@@ -8,6 +8,7 @@ data class StageModel(
         val description: String? = null,
         val km: String? = null,
         val imgUrl: String? = null,
+        val profileImgUrl: String?,
         val date: String? = null,
         val stage: Int,
         val averageSpeed: String? = null,
