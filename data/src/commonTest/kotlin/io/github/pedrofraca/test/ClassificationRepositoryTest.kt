@@ -6,7 +6,7 @@ import io.github.pedrofraca.domain.model.StageClassificationModel
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import org.junit.Test
+import kotlin.test.Test
 
 class ClassificationRepositoryTest {
     private val api = mockk<ReadOnlyDataSourceWithFilter<StageClassificationModel, String>>(relaxed = true)

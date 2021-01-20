@@ -7,7 +7,7 @@ import io.github.pedrofraca.domain.model.StageModel
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import org.junit.Test
+import kotlin.test.Test
 
 class StageRepositoryTest {
 
@@ -27,7 +27,9 @@ class StageRepositoryTest {
 
     @Test
     fun `test non empty response saves items`() {
-        every { api.getAll() } returns listOf(StageModel("patata", stage = 1))
+        every { api.getAll() } returns listOf(StageModel("This is the first stage",
+            stage = 1,
+            profileImgUrl = ""))
 
         repo.refresh()
 

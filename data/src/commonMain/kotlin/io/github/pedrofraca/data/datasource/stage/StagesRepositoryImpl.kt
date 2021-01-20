@@ -9,17 +9,17 @@ import io.github.pedrofraca.domain.model.StageModel
  * One to retrieve the Stages and the other one to persists them.
  */
 
-open class StagesRepositoryImpl(private val apiDataSource: ReadOnlyDataSource<StageModel>,
-                                private val databaseDataSource: WriteDataSource<StageModel>) : StageRepository {
+open class StagesRepositoryImpl(private val readDataSource: ReadOnlyDataSource<StageModel>,
+                                private val persistenceDataSource: WriteDataSource<StageModel>) : StageRepository {
 
     override fun refresh(): List<StageModel> {
-        val stages = apiDataSource.getAll()
+        val stages = readDataSource.getAll()
         stages.forEach {
-            databaseDataSource.save(it)
+            persistenceDataSource.save(it)
         }
         return stages
     }
 
     override val stages: List<StageModel>
-        get() = databaseDataSource.getAll()
+        get() = persistenceDataSource.getAll()
 }
