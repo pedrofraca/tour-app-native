@@ -5,7 +5,7 @@ import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class TestStage {
+class  TestStage {
     @Test
     fun testStageIsCompleted() {
         assertTrue(StageModel(name = "io.github.pedrofraca.test.TestStage", winner = "Pedro", stage = 1, profileImgUrl = "").completed(),
