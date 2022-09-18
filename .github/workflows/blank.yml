@@ -8,6 +8,9 @@ on:
   push:
     branches: [ master ]
 
+permissions:
+  contents: read
+  pull-requests: write
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -18,8 +21,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
         with:
           java-version: 11
       - name: Gradle Command
@@ -36,6 +39,9 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: build/xcode-frameworks/data.framework
       - name: Publishing domain artifactory
-        uses: eskatos/gradle-command-action@v1.3.1
+        uses: gradle/gradle-build-action@v2
         with:
-          arguments: publish -Dpassword=${{ secrets.PASSWORD }} -Dusername=${{ secrets.USERNAME }}
+          arguments: publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
