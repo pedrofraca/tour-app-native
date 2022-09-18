@@ -1,13 +1,12 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
-repositories {
-    mavenCentral()
-    jcenter()
-}
-
 plugins {
     kotlin("multiplatform")
     `maven-publish`
+}
+
+repositories {
+    mavenCentral()
 }
 
 group = "io.github.pedrofraca"
@@ -49,18 +48,28 @@ kotlin {
 
     jvm()
 
-    sourceSets["commonMain"].dependencies {
-        api(project(":domain"))
-        implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                api(project(":domain"))
+                implementation("org.jetbrains.kotlin:kotlin-stdlib")
+            }
+        }
 
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test-junit"))
+                implementation("io.mockk:mockk:1.9.3")
+            }
+        }
+
+        val iosMain by getting {
+            dependencies {
+
+            }
+        }
     }
 
-    sourceSets["commonTest"].dependencies {
-        implementation(kotlin("test-junit"))
-        implementation("io.mockk:mockk:1.9.3")
-    }
-
-    sourceSets["iosMain"].dependencies {}
     
 }
 

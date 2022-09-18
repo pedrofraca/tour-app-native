@@ -1,5 +1,3 @@
 rootProject.name = 'tourapp-native'
 
 include ':domain', ':data'
-
-enableFeaturePreview('GRADLE_METADATA')

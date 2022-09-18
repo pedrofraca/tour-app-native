@@ -43,16 +43,20 @@ kotlin {
     }
 
     jvm()
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlin:kotlin-stdlib")
+            }
+        }
 
-    sourceSets["commonMain"].dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib")
+        val commonTest by getting {
+            dependencies {
+            implementation(kotlin("test-junit"))
+            implementation("io.mockk:mockk:1.9.3")
+            }
+        }
     }
-
-    sourceSets["commonTest"].dependencies {
-        implementation(kotlin("test-junit"))
-        implementation("io.mockk:mockk:1.9.3")
-    }
-    
 }
 
 
