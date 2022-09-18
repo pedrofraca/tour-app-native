@@ -18,8 +18,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/pedrofraca/tour-app-native")
             credentials {
-                username = System.getProperty("username")
-                password = System.getProperty("password")
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
