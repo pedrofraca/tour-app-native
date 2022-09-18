@@ -9,7 +9,7 @@ interface StageRepository {
     val stages: List<StageModel>
 
     /**
-     * Triggers an update and stores te result in the write data source.
+     * Triggers an update and gets an updated version of the Stages.
      */
     fun refresh() : List<StageModel>
 }
