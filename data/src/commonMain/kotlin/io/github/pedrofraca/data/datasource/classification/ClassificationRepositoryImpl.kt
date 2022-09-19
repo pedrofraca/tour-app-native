@@ -9,7 +9,7 @@ class ClassificationRepositoryImpl(private val api: ReadOnlyDataSourceWithFilter
 
     override fun refreshForStage(stage: String) : StageClassificationModel {
         val classification = api.get(stage)
-        db.save(classification)
+        db.save(classification, stage)
         return classification
     }
 
