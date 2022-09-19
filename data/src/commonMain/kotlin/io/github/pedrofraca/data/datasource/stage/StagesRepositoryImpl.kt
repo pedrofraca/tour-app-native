@@ -3,6 +3,7 @@ package io.github.pedrofraca.data.datasource.stage
 import io.github.pedrofraca.data.datasource.ReadOnlyDataSource
 import io.github.pedrofraca.data.datasource.WriteDataSource
 import io.github.pedrofraca.domain.model.StageModel
+import io.github.pedrofraca.domain.usecase.stage.repository.StageRepository
 
 /**
  * Repository class to manage stages. Which basically uses two data sources.
