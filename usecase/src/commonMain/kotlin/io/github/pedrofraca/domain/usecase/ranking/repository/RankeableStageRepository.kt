@@ -1,4 +1,4 @@
-package io.github.pedrofraca.data.datasource.rankeablestage
+package io.github.pedrofraca.domain.usecase.ranking.repository
 
 import io.github.pedrofraca.domain.model.RankeableStage
 
