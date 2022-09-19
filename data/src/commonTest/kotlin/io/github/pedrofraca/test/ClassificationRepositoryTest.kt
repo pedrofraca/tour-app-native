@@ -20,6 +20,6 @@ class ClassificationRepositoryTest {
         repo.refreshForStage("1")
 
         verify { api.get("1") }
-        verify { db.save(any()) }
+        verify { db.save(any(), "1") }
     }
 }
