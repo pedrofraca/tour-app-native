@@ -52,6 +52,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":domain"))
+                api(project(":usecase"))
                 implementation("org.jetbrains.kotlin:kotlin-stdlib")
             }
         }
