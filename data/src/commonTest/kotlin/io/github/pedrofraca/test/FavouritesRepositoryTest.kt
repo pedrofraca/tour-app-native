@@ -1,6 +1,7 @@
 package io.github.pedrofraca.test
 
 import io.github.pedrofraca.data.datasource.ReadOnlyDataSource
+import io.github.pedrofraca.data.datasource.ReadOnlyDataSourceWithFilter
 import io.github.pedrofraca.data.datasource.WriteDataSource
 import io.github.pedrofraca.data.datasource.favourites.FavouritesRepositoryImpl
 import io.github.pedrofraca.domain.usecase.favourite.repository.SetStageAsFavoriteParam
@@ -12,7 +13,7 @@ import kotlin.test.assertTrue
 
 class FavouritesRepositoryTest {
     private val setFavouriteApi = mockk<WriteDataSource<SetStageAsFavoriteParam>>(relaxed = true)
-    private val favouritesListApi = mockk<ReadOnlyDataSource<SetStageAsFavoriteParam>>()
+    private val favouritesListApi = mockk<ReadOnlyDataSourceWithFilter<List<SetStageAsFavoriteParam>, String>>(relaxed = true)
 
 
     @Test
@@ -29,7 +30,8 @@ class FavouritesRepositoryTest {
     fun `getFavouriteStagesByUserId must invoke api to retrieve Stages`() {
         val favouritesRepository = FavouritesRepositoryImpl(setFavouriteApi, favouritesListApi)
         val stagesId = listOf(SetStageAsFavoriteParam("USER", 0 , false))
-        every { favouritesListApi.getAll() } returns stagesId
+
+        every { favouritesListApi.get("username") } returns stagesId
 
         val result = favouritesRepository.getFavouriteStagesByUsername("username")
 
