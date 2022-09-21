@@ -3,17 +3,28 @@ package io.github.pedrofraca.test.favourite
 import io.github.pedrofraca.domain.usecase.favourite.SetStageAsFavoriteUseCaseImpl
 import io.github.pedrofraca.domain.usecase.favourite.repository.FavouritesRepository
 import io.github.pedrofraca.domain.usecase.favourite.repository.SetStageAsFavoriteParam
+import io.github.pedrofraca.domain.usecase.ranking.repository.RankeableStageRepository
+import io.mockk.every
+import io.mockk.mockk
 import kotlin.test.Test
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class SetStageAsFavoriteUseCaseTest {
 
+    private val repository = mockk<FavouritesRepository>(relaxed = true)
+
+
     @Test
     fun `invoking SetStageAsFavorite for neutral Stage must return True`() {
-        val acceptingRepository = createFavouritesRepository(acceptFavourite = true)
-        val param = SetStageAsFavoriteParam(username = "username", stageId = "id_0", favouriteState = true)
-        val setStageAsFavoriteUseCase = SetStageAsFavoriteUseCaseImpl(acceptingRepository)
+        val param = SetStageAsFavoriteParam(username = "username", stageId = 0, favouriteState = false)
+
+        every { repository.getFavouriteStagesByUsername(param.username) } returns listOf(param)
+        every { repository.setFavouriteStage(any()) } returns true
+
+
+        val setStageAsFavoriteUseCase = SetStageAsFavoriteUseCaseImpl(repository)
 
         val result = setStageAsFavoriteUseCase(param)
 
@@ -22,26 +33,14 @@ class SetStageAsFavoriteUseCaseTest {
 
     @Test
     fun `invoking SetStageAsFavorite for already favourited Stage must return False`() {
-        val failingRepository = createFavouritesRepository(acceptFavourite = false)
-        val param = SetStageAsFavoriteParam(username = "username", stageId = "id_0", favouriteState = true)
-        val setStageAsFavoriteUseCase = SetStageAsFavoriteUseCaseImpl(failingRepository)
+        val param = SetStageAsFavoriteParam(username = "username", stageId = 0, favouriteState = true)
 
-        val result = setStageAsFavoriteUseCase(param)
+        every { repository.getFavouriteStagesByUsername(param.username) } returns listOf(param)
 
-        assertFalse { result }
-    }
+        val setStageAsFavoriteUseCase = SetStageAsFavoriteUseCaseImpl(repository)
 
-    /**
-     * Creates implementation of FavouritesRepository,
-     * which returns @param acceptFavourite as result of #setFavouriteStage()
-     */
-    private fun createFavouritesRepository(acceptFavourite: Boolean) = object : FavouritesRepository {
-        override fun setFavouriteStage(param: SetStageAsFavoriteParam): Boolean {
-            return acceptFavourite
-        }
-
-        override fun getFavouriteStagesByUsername(username: String): List<String> {
-            return emptyList()
+        assertFailsWith(IllegalStateException::class) {
+            setStageAsFavoriteUseCase(param)
         }
     }
 }

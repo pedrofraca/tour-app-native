@@ -11,6 +11,6 @@ interface FavouritesRepository {
     /**
      * returns id of Stages that user has liked
      */
-    fun getFavouriteStagesByUsername(username: String) : List<String>
+    fun getFavouriteStagesByUsername(username: String) : List<SetStageAsFavoriteParam>
 
 }
