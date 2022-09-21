@@ -1,6 +1,7 @@
 package io.github.pedrofraca.data.datasource.favourites
 
 import io.github.pedrofraca.data.datasource.ReadOnlyDataSource
+import io.github.pedrofraca.data.datasource.ReadOnlyDataSourceWithFilter
 import io.github.pedrofraca.data.datasource.WriteDataSource
 import io.github.pedrofraca.data.datasource.WriteDataSourceWithFilter
 import io.github.pedrofraca.domain.usecase.favourite.repository.FavouritesRepository
@@ -8,7 +9,7 @@ import io.github.pedrofraca.domain.usecase.favourite.repository.SetStageAsFavori
 
 class FavouritesRepositoryImpl(
     private val setFavouriteApi: WriteDataSource<SetStageAsFavoriteParam>,
-    private val favouritesListApi: ReadOnlyDataSource<SetStageAsFavoriteParam>
+    private val favouritesListApi: ReadOnlyDataSourceWithFilter<List<SetStageAsFavoriteParam>, String>
 ) : FavouritesRepository {
 
     override fun setFavouriteStage(param: SetStageAsFavoriteParam) : Boolean {
@@ -16,6 +17,6 @@ class FavouritesRepositoryImpl(
     }
 
     override fun getFavouriteStagesByUsername(username: String): List<SetStageAsFavoriteParam> {
-        return favouritesListApi.getAll()
+        return favouritesListApi.get(username)
     }
 }

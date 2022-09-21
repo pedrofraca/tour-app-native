@@ -3,12 +3,10 @@ package io.github.pedrofraca.test.favourite
 import io.github.pedrofraca.domain.usecase.favourite.SetStageAsFavoriteUseCaseImpl
 import io.github.pedrofraca.domain.usecase.favourite.repository.FavouritesRepository
 import io.github.pedrofraca.domain.usecase.favourite.repository.SetStageAsFavoriteParam
-import io.github.pedrofraca.domain.usecase.ranking.repository.RankeableStageRepository
 import io.mockk.every
 import io.mockk.mockk
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
-import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class SetStageAsFavoriteUseCaseTest {
