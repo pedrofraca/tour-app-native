@@ -10,8 +10,8 @@ class FavouritesRepositoryImpl(
     private val favouritesListApi: ReadOnlyDataSource<String>
 ) : FavouritesRepository {
 
-    override fun setFavouriteStage(param: SetStageAsFavoriteParam) {
-        setFavouriteApi.save(param)
+    override fun setFavouriteStage(param: SetStageAsFavoriteParam) : Boolean {
+        return setFavouriteApi.save(param)
     }
 
     override fun getFavouriteStagesByUserId(userId: String): List<String> {

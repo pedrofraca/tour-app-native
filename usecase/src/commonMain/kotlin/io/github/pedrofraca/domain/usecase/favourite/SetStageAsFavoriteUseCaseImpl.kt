@@ -4,7 +4,7 @@ import io.github.pedrofraca.domain.usecase.favourite.repository.FavouritesReposi
 import io.github.pedrofraca.domain.usecase.favourite.repository.SetStageAsFavoriteParam
 
 class SetStageAsFavoriteUseCaseImpl(private val repository: FavouritesRepository) : SetStageAsFavoriteUseCase {
-    override fun invoke(param: SetStageAsFavoriteParam) {
+    override fun invoke(param: SetStageAsFavoriteParam): Boolean {
         return repository.setFavouriteStage(param)
     }
 }
