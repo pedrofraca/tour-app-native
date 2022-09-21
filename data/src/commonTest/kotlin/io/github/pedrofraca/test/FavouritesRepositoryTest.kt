@@ -31,7 +31,7 @@ class FavouritesRepositoryTest {
         val stagesId = listOf("id_0", "id_1", "id_2")
         every { favouritesListApi.getAll() } returns stagesId
 
-        val result = favouritesRepository.getFavouriteStagesByUserId("userId_0")
+        val result = favouritesRepository.getFavouriteStagesByUsername("username")
 
         assertTrue { result.containsAll(stagesId) }
     }

@@ -14,7 +14,7 @@ class FavouritesRepositoryImpl(
         return setFavouriteApi.save(param)
     }
 
-    override fun getFavouriteStagesByUserId(userId: String): List<String> {
+    override fun getFavouriteStagesByUsername(username: String): List<String> {
         return favouritesListApi.getAll()
     }
 }

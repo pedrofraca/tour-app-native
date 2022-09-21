@@ -40,7 +40,7 @@ class SetStageAsFavoriteUseCaseTest {
             return acceptFavourite
         }
 
-        override fun getFavouriteStagesByUserId(userId: String): List<String> {
+        override fun getFavouriteStagesByUsername(username: String): List<String> {
             return emptyList()
         }
     }
