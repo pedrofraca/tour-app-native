@@ -6,12 +6,12 @@ import io.github.pedrofraca.domain.usecase.favourite.repository.FavouritesReposi
 import io.github.pedrofraca.domain.usecase.favourite.repository.SetStageAsFavoriteParam
 
 class FavouritesRepositoryImpl(
-    private val setFavouriteApi: WriteDataSourceWithFilter<SetStageAsFavoriteParam, Boolean>,
+    private val setFavouriteApi: WriteDataSourceWithFilter<SetStageAsFavoriteParam, String>,
     private val favouritesListApi: ReadOnlyDataSource<String>
 ) : FavouritesRepository {
 
     override fun setFavouriteStage(param: SetStageAsFavoriteParam) : Boolean {
-        return setFavouriteApi.save(param)
+        return setFavouriteApi.save(param, param.username)
     }
 
     override fun getFavouriteStagesByUsername(username: String): List<String> {

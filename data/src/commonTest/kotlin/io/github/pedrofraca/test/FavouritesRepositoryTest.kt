@@ -11,7 +11,7 @@ import kotlin.test.Test
 import kotlin.test.assertTrue
 
 class FavouritesRepositoryTest {
-    private val setFavouriteApi = mockk<WriteDataSourceWithFilter<SetStageAsFavoriteParam, Boolean>>()
+    private val setFavouriteApi = mockk<WriteDataSourceWithFilter<SetStageAsFavoriteParam, String>>(relaxed = true)
     private val favouritesListApi = mockk<ReadOnlyDataSource<String>>()
 
 
@@ -22,7 +22,7 @@ class FavouritesRepositoryTest {
         val param = SetStageAsFavoriteParam("username", "id_0", true)
         favouritesRepository.setFavouriteStage(param)
 
-        verify { setFavouriteApi.save(param) }
+        verify { setFavouriteApi.save(param, param.username) }
     }
 
     @Test
