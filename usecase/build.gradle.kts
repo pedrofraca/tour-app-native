@@ -37,7 +37,7 @@ kotlin {
     iOSTarget("ios") {
         binaries {
             framework {
-                baseName = "domain"
+                baseName = "usecase"
             }
         }
     }
@@ -46,6 +46,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(":domain"))
                 implementation("org.jetbrains.kotlin:kotlin-stdlib")
             }
         }

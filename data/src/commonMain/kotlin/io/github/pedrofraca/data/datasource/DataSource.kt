@@ -9,9 +9,9 @@ interface ReadOnlyDataSourceWithFilter<T, S> : ReadOnlyDataSource<T>{
 }
 
 interface WriteDataSource<T> : ReadOnlyDataSource<T> {
-    fun save(item: T)
+    fun save(item: T) : Boolean
 }
 
 interface WriteDataSourceWithFilter<T, S> : ReadOnlyDataSourceWithFilter<T, S> {
-    fun save(item: T, param : S)
+    fun save(item: T, param : S) : Boolean
 }

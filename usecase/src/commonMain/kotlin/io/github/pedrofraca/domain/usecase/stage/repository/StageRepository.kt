@@ -1,4 +1,4 @@
-package io.github.pedrofraca.data.datasource.stage
+package io.github.pedrofraca.domain.usecase.stage.repository
 
 import io.github.pedrofraca.domain.model.StageModel
 

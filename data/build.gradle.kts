@@ -10,7 +10,7 @@ repositories {
 }
 
 group = "io.github.pedrofraca"
-version = "0.0.10-SNAPSHOT"
+version = "0.0.11-SNAPSHOT"
 
 publishing {
     repositories {
@@ -52,6 +52,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":domain"))
+                api(project(":usecase"))
                 implementation("org.jetbrains.kotlin:kotlin-stdlib")
             }
         }
