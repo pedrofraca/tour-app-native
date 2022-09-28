@@ -21,6 +21,10 @@ open class StagesRepositoryImpl(private val readDataSource: ReadOnlyDataSource<S
         return stages
     }
 
+    override fun getStageById(stageId: Int): Stage? {
+        return readDataSource.getAll().firstOrNull { it.stage == stageId }
+    }
+
     override val stages: List<Stage>
         get() = persistenceDataSource.getAll()
 }

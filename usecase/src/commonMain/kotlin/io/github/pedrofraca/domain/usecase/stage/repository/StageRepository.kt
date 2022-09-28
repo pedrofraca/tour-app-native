@@ -16,5 +16,5 @@ interface StageRepository {
     /**
      * Gets a stage by id
      */
-    fun getStageById(stageId: Int) : Stage
+    fun getStageById(stageId: Int) : Stage?
 }
