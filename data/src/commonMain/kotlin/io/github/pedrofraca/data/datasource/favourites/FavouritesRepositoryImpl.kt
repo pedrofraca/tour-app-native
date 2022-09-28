@@ -19,4 +19,10 @@ class FavouritesRepositoryImpl(
     override fun getFavouriteStagesByUsername(username: String): List<SetStageAsFavoriteParam> {
         return favouritesListApi.get(username)
     }
+
+    override fun getStageByUsername(stageId: Int, username: String): SetStageAsFavoriteParam? {
+        return favouritesListApi.get(username).firstOrNull { it.stageId == stageId }
+    }
+
+
 }
