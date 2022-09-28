@@ -3,7 +3,7 @@ package io.github.pedrofraca.test
 import io.github.pedrofraca.data.datasource.ReadOnlyDataSource
 import io.github.pedrofraca.data.datasource.WriteDataSource
 import io.github.pedrofraca.data.datasource.stage.StagesRepositoryImpl
-import io.github.pedrofraca.domain.model.StageModel
+import io.github.pedrofraca.domain.model.Stage
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -11,8 +11,8 @@ import kotlin.test.Test
 
 class StageRepositoryTest {
 
-    private val db = mockk<WriteDataSource<StageModel>>(relaxed = true)
-    private val api = mockk<ReadOnlyDataSource<StageModel>>(relaxed = true)
+    private val db = mockk<WriteDataSource<Stage>>(relaxed = true)
+    private val api = mockk<ReadOnlyDataSource<Stage>>(relaxed = true)
     private val repo = StagesRepositoryImpl(api, db)
 
     @Test
@@ -27,7 +27,7 @@ class StageRepositoryTest {
 
     @Test
     fun `test non empty response saves items`() {
-        every { api.getAll() } returns listOf(StageModel("This is the first stage",
+        every { api.getAll() } returns listOf(Stage("This is the first stage",
             stage = 1,
             profileImgUrl = ""))
 
