@@ -1,6 +1,6 @@
 package io.github.pedrofraca.domain.model
 
-data class StageModel(
+data class Stage(
         val name: String,
         val stage: Int,
         val winner: String? = null,

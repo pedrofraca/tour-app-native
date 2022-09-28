@@ -13,4 +13,6 @@ interface FavouritesRepository {
      */
     fun getFavouriteStagesByUsername(username: String) : List<SetStageAsFavoriteParam>
 
+    fun getStageByUsername(stageId: Int, username: String) : SetStageAsFavoriteParam?
+
 }

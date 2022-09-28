@@ -2,7 +2,7 @@ package io.github.pedrofraca.data.datasource.stage
 
 import io.github.pedrofraca.data.datasource.ReadOnlyDataSource
 import io.github.pedrofraca.data.datasource.WriteDataSource
-import io.github.pedrofraca.domain.model.StageModel
+import io.github.pedrofraca.domain.model.Stage
 import io.github.pedrofraca.domain.usecase.stage.repository.StageRepository
 
 /**
@@ -10,10 +10,10 @@ import io.github.pedrofraca.domain.usecase.stage.repository.StageRepository
  * One to retrieve the Stages and the other one to persists them.
  */
 
-open class StagesRepositoryImpl(private val readDataSource: ReadOnlyDataSource<StageModel>,
-                                private val persistenceDataSource: WriteDataSource<StageModel>) : StageRepository {
+open class StagesRepositoryImpl(private val readDataSource: ReadOnlyDataSource<Stage>,
+                                private val persistenceDataSource: WriteDataSource<Stage>) : StageRepository {
 
-    override fun refresh(): List<StageModel> {
+    override fun refresh(): List<Stage> {
         val stages = readDataSource.getAll()
         stages.forEach {
             persistenceDataSource.save(it)
@@ -21,6 +21,6 @@ open class StagesRepositoryImpl(private val readDataSource: ReadOnlyDataSource<S
         return stages
     }
 
-    override val stages: List<StageModel>
+    override val stages: List<Stage>
         get() = persistenceDataSource.getAll()
 }
