@@ -1,6 +1,6 @@
 package io.github.pedrofraca.domain.model
 
-class RateableStage(stage: Stage?, username: String?, fav: Boolean) {
+open class RateableStage(stage: Stage?, username: String?, fav: Boolean) {
     init {
         stage?.let {
             if (stage.completed().not()) {
