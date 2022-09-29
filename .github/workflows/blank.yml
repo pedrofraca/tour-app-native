@@ -30,7 +30,7 @@ jobs:
         with:
           # Path to the Gradle Wrapper directory
           build-root-directory: data
-          arguments: packForXcode
+          arguments: build
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.1.4
         with:
