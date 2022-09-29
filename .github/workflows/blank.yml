@@ -25,12 +25,17 @@ jobs:
         with:
           distribution: temurin
           java-version: 11
-      - name: Gradle Command
-        uses: eskatos/gradle-command-action@v1.3.1
-        with:
-          # Path to the Gradle Wrapper directory
-          build-root-directory: data
-          arguments: build
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Execute Gradle build
+        run: ./gradlew build
+#      - name: Gradle Command
+#        uses: eskatos/gradle-command-action@v1.3.1
+#        with:
+#          # Path to the Gradle Wrapper directory
+#          build-root-directory: data
+#          arguments: jvmJar
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.1.4
         with:
